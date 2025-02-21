@@ -1,19 +1,21 @@
-const express=require('express');
-const app=express();
+const express = require('express');
+const app = express();
 require('dotenv').config();
 const cors = require('cors');
+
 app.use(cors());
 
 app.use(express.json());
-const Port=process.env.Port || 8000;
+
+const PORT = process.env.PORT || 8000;
 
 const bfhlRoutes = require('./routes/Route');
 app.use('/bfhl', bfhlRoutes);
 
-app.listen(Port, () => {
-    console.log(`Server is started at port ${Port}`);
+app.listen(PORT, () => {
+  console.log(`Server is started at port ${PORT}`);
 });
 
 app.get('/', (req, res) => {
-    res.send(`<h1>This is homepage</h1>`);
-})
+  res.send(`<h1>This is homepage</h1>`);
+});
